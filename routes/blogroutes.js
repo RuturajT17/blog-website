@@ -1,6 +1,5 @@
-const express = require('express');
-const Blog = require('../models/Blog');
-import { authenticateUser } from '../middleware/auth.js';
+import express from 'express';
+import Blog from '../models/Blog.js';
 
 const router = express.Router();
 
@@ -10,20 +9,22 @@ router.get('/', async (req, res) => {
     const blogs = await Blog.getAll();
     res.json(blogs);
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Failed to fetch blogs' });
+    res.status(500).json({ error: err.message });
   }
 });
 
-// Handle likes
-router.post('/:id/like', authenticate, async (req, res) => {
+// Add new blog
+router.post('/', async (req, res) => {
   try {
-    const count = await Blog.toggleLike(req.params.id, req.user.id);
-    res.json({ newLikeCount: count });
+    const { title, content } = req.body;
+    if (!title || !content) {
+      return res.status(400).json({ error: 'Title and content required' });
+    }
+    const id = await Blog.create(title, content);
+    res.status(201).json({ id, title, content });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Failed to process like' });
+    res.status(500).json({ error: err.message });
   }
 });
 
-module.exports = router;
+export default router;

@@ -1,0 +1,176 @@
+/* ===== Vibrant Color Scheme ===== */
+:root {
+  --primary: #4361ee;       /* Energetic blue */
+  --primary-light: #4895ef; /* Lighter blue */
+  --secondary: #3f37c9;     /* Deep blue */
+  --accent: #f72585;        /* Vibrant pink */
+  --light: #f8f9fa;         /* Light background */
+  --dark: #1e293b;          /* Dark text */
+  --gray: #94a3b8;          /* Secondary text */
+  --success: #4cc9f0;       /* Teal accent */
+}
+
+/* ===== Full Page Gradient Background ===== */
+body {
+  background: linear-gradient(135deg, 
+    #f3f4f6 0%, 
+    #e5e7eb 50%, 
+    #d1d5db 100%);
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  color: var(--dark);
+}
+
+/* ===== Signup Container ===== */
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background: url('https://images.unsplash.com/photo-1518655048521-f130df041f66?ixlib=rb-4.0.3&q=80') center/cover no-repeat;
+  position: relative;
+}
+
+.signup-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(5px);
+}
+
+/* ===== Signup Card ===== */
+.signup-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.1),
+    0 5px 10px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 500px;
+  padding: 2.5rem;
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+}
+
+.signup-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: var(--accent);
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: -1;
+  opacity: 0.15;
+}
+
+/* ===== Form Elements ===== */
+.signup-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.signup-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  color: white;
+  font-size: 2rem;
+  box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+}
+
+.signup-header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ===== Input Fields ===== */
+.form-group input {
+  background-color: rgba(248, 249, 250, 0.8);
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  background-color: white;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+}
+
+/* ===== Signup Button ===== */
+.signup-button {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.signup-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+}
+
+.signup-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.signup-button:hover::before {
+  left: 100%;
+}
+
+/* ===== Footer Link ===== */
+.signup-footer a {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+  position: relative;
+}
+
+.signup-footer a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.signup-footer a:hover::after {
+  width: 100%;
+}
